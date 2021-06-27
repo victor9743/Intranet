@@ -1,0 +1,21 @@
+#area_login{
+    margin-top: 100px;
+    height: 450px;
+    border: 1px solid orange;
+    border-radius: 15px;
+
+
+}
+#menu{
+    background-color: orange;
+}
+
+.opcao{
+
+    color: white;
+
+}
+
+.opcao:hover{
+    color:white;
+}

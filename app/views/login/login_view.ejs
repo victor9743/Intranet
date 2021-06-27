@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap-4.0.0/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Login - Intranet</title>
+</head>
+<body>
+
+    <% if(validacao.length > 0) {%>
+        <div class="modal" id="aviso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: block;">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2 class="modal-title text-danger" id="exampleModalLabel">Aviso</h2>
+                </div>
+                <div class="modal-body">
+                
+                    <% for( var x=0; x<validacao.length; x++ ){ %> 
+
+                        <h5 class="text-danger"><%= validacao[x].msg %></h5>
+
+                    <% } %> 
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" id="modalClose" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+    <% } else if( verif.length <= 0){%>
+
+        <div class="modal" id="aviso" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" style="display: block;">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h2 class="modal-title text-danger" id="exampleModalLabel">Aviso</h2>
+                </div>
+                <div class="modal-body">
+                    <h5 class="text-danger">Usuário ou senha Inválida</h5>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-danger" id="modalClose" data-dismiss="modal">Fechar</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        
+    
+    <% } %> 
+
+
+
+
+    
+    <div class="row">
+        <div class="col-md-12 mt-5 container d-flex">
+                <div class="col-12 d-flex justify-content-end">
+                    <div>
+                        <h3 id="data_login"></h3>
+                       
+                    </div>
+                
+                </div>
+
+           
+          
+            
+        </div>
+
+
+        <div class="container col-md-6 " id="area_login">
+
+            <div class="text-right p-4">
+                <h2 class="d-none d-md-block">Acesso Restrito</h2>
+            </div>
+        
+
+            <form action="/validacao" method="POST" class="text-center p-1" >
+                
+                <div class="form-group row m-2">
+
+                    <h4 class="col-sm-12 mt-3"><label for="usuario_intra" >Login</label></h4>
+                    <input type="text" id="usuario_intra" name="usuario" class="form-control col-md-6 m-auto">
+
+
+                    <h4 class="col-sm-12 mt-3"><label for="senha_intra" >Senha</label></h4>
+                    <input type="password" id="senha_intra" name="senha" class="form-control col-md-6 m-auto"><br>
+                    
+                    <div class="col-sm-12 form-group mt-5">
+                        <button type="submit" id="btn_login" class="btn btn-block btn-success col-md-2 m-auto">Entrar</button>
+                    </div>
+                   
+            
+
+                </div>
+             
+            </form>
+
+        </div>
+
+
+    </div>
+            
+        
+  
+
+    <%- include("../_layout/scripts") %> 
+</body>
+</html>

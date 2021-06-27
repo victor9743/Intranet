@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <%- include("../_layout/head"); %>
+    <title>Cadastro Tipos</title>
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+            $("#opcoes").click(()=>{
+                
+            
+            })
+
+        })
+    </script>
+
+</head>
+<body>
+    <%- include('../_layout/menu'); %>
+    <h1>Cadastro Tipos</h1>
+
+    <div class="modal" id="cadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true" >
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title text-primary" id="exampleModalLabel">Cadastro de Arquivos</h2>
+            </div>
+            <form action="/arquivo_salvar" method="POST">                
+                <div class="modal-body row ">
+                      <div class="col-sm-12 form-group">                       
+                            <div class="col-12">
+                                <p>Descrição do arquivo</p>
+                                <input type="text" class="form-control" name="arquivo" required>
+                                
+                            </div>
+                      </div>
+
+                    <div class="col-sm-12 form-group">
+
+                        <div class="col-6">
+                            <p>Ativo</p>
+                            
+                            <select class="form-control" name="ativo" required>
+                                <option></option>
+                                <option value="sim">Sim</option>
+                                <option value="não">Não</option>
+                            </select>
+                            
+
+                        </div>
+       
+
+
+                    </div>
+                
+
+                   
+                </div>
+                  
+                <div class="modal-footer">
+                    <button class="btn btn-danger" id="fechar">Fechar</button>
+                    <input type="submit" value="Cadastrar" class="btn btn-success">
+                 
+                </div>
+
+            </form>
+            
+          
+        
+          </div>
+        </div>
+      </div>
+      <div id="acoes"></div>
+      
+    <div class="container mt-5">
+
+        <table class="table table-bordered table-striped" style="text-align: center;">
+            <thead class="text-light">
+                <tr style="background-color: orange;">
+                    <th>#</th>
+                    <th>usuário</th>
+                    <th>Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+               <% for(var x = 0; x<resultado.length; x++){ %> 
+                <tr>
+                    <td style="width: 20px;"><%= x+1%></td>
+                    <td style="width: 720px;"><%= resultado[x].arquivo %> </td>
+                    <td><button id="opcoes">opções</button></td>
+                </tr>
+                <% } %> 
+            </tbody>
+           
+              
+           
+    
+        </table>
+
+        <div>
+            <button class="btn btn-success" style="float: right;" id="cadastrar_usuario">Cadastrar</button>
+        </div>
+        <div  style="clear: both;"></div>
+    </div>
+
+    
+    
+    <%- include("../_layout/scripts"); %> 
+    <script>
+        document.getElementById("cadastrar_usuario").onclick = function(){
+
+            
+            document.getElementById("cadastro").style.display="block";
+
+        }
+
+        document.getElementById("fechar").onclick= function(){
+
+            document.getElementById("cadastro").style.display="none";
+        }
+
+    </script>
+    
+</body>
+</html>

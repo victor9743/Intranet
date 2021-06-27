@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <%- include("../_layout/head"); %>
+    <title>Cadastro de Usuários</title>
+
+    <script>
+        $(document).ready(function(){
+
+            $("#detalhes").click(function(){
+
+                $.ajax({
+
+                    url:"/usuario",
+                    method: "get",
+                    success:(data)=>{
+                        $("#op").html(data);
+                    }
+                })
+            })
+
+        })
+    </script>
+</head>
+<body>
+    <%- include("../_layout/menu"); %>
+
+    <div class="modal" id="cadastro" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h2 class="modal-title text-primary" id="exampleModalLabel">Cadastro de Usuários</h2>
+            </div>
+
+            
+
+            <form action="/salvar" method="POST">
+                
+                <div class="modal-body row ">
+
+                    <div class="col-sm-12 form-group">
+                        
+                        
+                        <div class="col-6">
+                            <p>Usuário</p>
+                            <input type="text" class="form-control" name="usuario" required>
+                             
+                        </div>
+                      
+                        
+
+                    </div>
+
+                    <div class="col-sm-12 form-group">
+
+                        <div class="col-6">
+                            <p>Senha</p>
+                            <input class="form-control" type="password" name="senha" required>
+
+                        </div>
+       
+
+
+                    </div>
+                
+
+                   
+                </div>
+                  
+                <div class="modal-footer">
+                    <button class="btn btn-danger" id="fechar">Fechar</button>
+                    <input type="submit" value="Cadastrar" class="btn btn-success">
+                 
+                </div>
+
+            </form>
+            
+          
+        
+          </div>
+        </div>
+      </div>
+
+    <div class="container mt-5">
+
+        <table class="table table-bordered table-striped" style="text-align: center;">
+            <thead class="text-light">
+                <tr style="background-color: orange;">
+                    <th>#</th>
+                    <th>usuário</th>
+                    <th>Opções</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% for(var x=0; x<usuario.length; x++){ %>
+                        <tr>
+                            <td style="width: 20px;"><%= x+1 %></td>
+                            <td style="width: 720px;"><%= usuario[x].usuario %></td>
+                            <td><a href="/usuario?id_usuario=<%= usuario[x].id_usuario %>" id="detalhes">detalhes</a>
+                                <a href="/remover?id_usuario=<%= usuario[x].id_usuario %>">remover</a></td>
+                        </tr>
+                <% } %>
+            </tbody>
+           
+              
+           
+    
+        </table>
+
+        <div>
+            <button class="btn btn-success" style="float: right;" id="cadastrar_usuario">Cadastrar</button>
+        </div>
+        <div  style="clear: both;"></div>
+    </div>
+
+    <div class="bg-success" >
+
+        <p id="op"></p>
+    </div>
+
+    <%- include("../_layout/scripts") %> 
+
+    <script>
+        document.getElementById("cadastrar_usuario").onclick = function(){
+
+            
+            document.getElementById("cadastro").style.display="block";
+
+        }
+
+        document.getElementById("fechar").onclick= function(){
+
+            document.getElementById("cadastro").style.display="none";
+        }
+
+    </script>
+    
+</body>
+</html>

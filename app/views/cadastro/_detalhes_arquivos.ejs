@@ -1,0 +1,73 @@
+<form action="/update" method="POST">
+
+    <div class="modal-body row">
+
+        <div class="col-sm-12 form-group">
+            
+            <input type='text' class="form-control" name="id_usuario" value="<%= user[0].id_usuario %>" readonly>
+            
+            
+            
+            <div class="col-6">
+                <p>Usuário</p>
+                <input type="text" class="form-control" id="campo_nome" value="<%= user[0].usuario %>" name="usuario" readonly >
+                 
+            </div>
+          
+            
+
+        </div>
+
+        <div class="col-sm-12 form-group">
+
+            <div class="col-6">
+                
+                <p>Antiga Senha</p>
+                <input class="form-control" type="text" id="campo_senha" name="senha" readonly >
+                
+
+            </div>
+
+            <div class="d-flex col-16">
+                
+                <div class="col-sm-6">
+                    <p>Nova Senha</p>
+                    <input class="form-control" type="text" id="campo_senha2" name="senha2" readonly >
+
+                </div>
+             
+                <div class="col-sm-6">
+                    <p>Repita a Nova Senha</p>
+                    <input class="form-control" type="text" id="campo_senha3" name="senha3" readonly >
+
+                </div>
+            
+                
+
+            </div>
+
+
+
+        </div>
+        
+        <input type="submit" value="confirmar">
+
+       
+    </div>
+
+
+
+   </form>     
+
+
+  
+<div class="modal-footer">
+    <a href="/usuarios"> <button class="btn btn-danger" id="fechar">Voltar</button></a>
+
+    <button class="btn btn-warning" id="editar">Editar</button>
+
+   
+
+    
+ 
+</div>
